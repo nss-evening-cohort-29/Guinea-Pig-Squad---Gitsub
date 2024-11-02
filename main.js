@@ -99,9 +99,9 @@ const profileHTML = `
       </div>
     </div>
   </div>`
-    };
+};
 
-    renderToDom("#packages-container", domString);
+renderToDom("#packages-container", domString);
   };
 
   const pinnedRepos = document.querySelector("#pinnedRepo-container")
@@ -144,8 +144,12 @@ const footerHTML = `
     navbar.innerHTML = navbarHtml;
     profile.innerHTML = profileHTML;
     footerEl.innerHTML = footerHTML;
-    cardsOnDom(repos);
+    // cardsOnDom(repos);
+    if (document.URL.includes('packages.html')) {
     packOnDom(packages);
+  } else if (document.URL.includes('index.html')) {
+    cardsOnDom(repos)
   }
+};
 
   startApp();
