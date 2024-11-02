@@ -34,6 +34,14 @@ const repos = [
   }
 ]
 
+const packages = [
+  {
+    id: 0,
+    name: 'example 1',
+    description: 'this is a package',
+  }
+]
+
 const navbar = document.querySelector('#navbar-container');
 const navbarHtml = `
 <ul class="nav nav-underline">
@@ -47,7 +55,7 @@ const navbarHtml = `
       <a class="nav-link" href="#">Projects</a>
       </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Packages</a>
+      <a class="nav-link" href="packages.html" id="packages-link">Packages</a>
       </li>
   </ul>
 `
@@ -76,6 +84,25 @@ const profileHTML = `
   </div>
   </div>
   `
+
+  const pinnedPackages = document.querySelector("#packages-container")
+  const packOnDom = (array) => {
+    let domString = "";
+    for (const package of array) {
+      domString += `<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">${package.name}</h5>
+        <p class="card-text">${package.description}</p>
+        <a href="package.html" class="btn btn-primary">learn more</a>
+      </div>
+    </div>
+  </div>`
+    };
+
+    renderToDom("#packages-container", domString);
+  };
 
   const pinnedRepos = document.querySelector("#pinnedRepo-container")
 
@@ -118,6 +145,7 @@ const footerHTML = `
     profile.innerHTML = profileHTML;
     footerEl.innerHTML = footerHTML;
     cardsOnDom(repos);
+    packOnDom(packages);
   }
 
   startApp();
