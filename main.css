@@ -10,6 +10,9 @@
   justify-self: center;
 }
 
-/* #navbar-container {
-  
-} */
+#pinnedRepo-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
