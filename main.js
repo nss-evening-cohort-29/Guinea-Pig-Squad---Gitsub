@@ -104,6 +104,24 @@ const profileHTML = `
 renderToDom("#packages-container", domString);
   };
 
+  const pForm = document.querySelector("#packages-form")
+
+  if (document.URL.includes("packages.html")) {
+    pForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const newPackage = {
+        
+        id: repos.length + 1,
+        name: document.querySelector("#packageName").value,
+        description: document.querySelector("#package-description").value,
+      };
+      
+      packages.push(newPackage);
+      packOnDom(packages);
+      form.reset();
+    });
+  }
+
   const pinnedRepos = document.querySelector("#pinnedRepo-container")
 
  const cardsOnDom = (array) => { 
@@ -123,6 +141,24 @@ renderToDom("#packages-container", domString);
 
 renderToDom("#pinnedRepo-container", domString);
 };
+
+const form = document.querySelector('#pinned-repo-form')
+
+if (document.URL.includes("index.html")) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newPinnedRepo = {
+      
+      id: repos.length + 1,
+      name: document.querySelector("#projectBoardName").value,
+      description: document.querySelector("#pin-repo-description").value,
+    };
+    
+    repos.push(newPinnedRepo);
+    cardsOnDom(repos);
+    form.reset();
+  });
+}
 
 
 const footerEl = document.querySelector('#footerEl-container')
