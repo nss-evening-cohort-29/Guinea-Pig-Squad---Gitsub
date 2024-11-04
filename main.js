@@ -124,6 +124,45 @@ renderToDom("#packages-container", domString);
 renderToDom("#pinnedRepo-container", domString);
 };
 
+//create buttons for tags for repos
+const createTags = (repo) => {
+  let tagString = '';
+  repo.tags.map((tag) => {
+      tagString += `<a href="#" class="btn btn-primary">${tag}</a>`
+  })
+  return tagString
+};
+
+//add cards for repositories
+const reposOnDom = (array) => {
+  let domString = "";
+  for (const repo of array) {
+    domString += `
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${repo.name}</h5>
+          <p class="card-text">${repo.description}</p>
+          <a href="#" class="btn btn-primary">☆</a>
+          ${createTags(repo)}
+        </div>
+      </div>
+    </div>`
+  };
+
+  renderToDom('#repo-container', domString);
+};
+
+const filterPinned = (array) => {
+  let newArr = [];
+  array.map((entry) => {
+    if (array[entry].pinned === true) {
+      newArr.push(array[entry]);
+    }
+  })
+  return newArr;
+}
+
 
 const footerEl = document.querySelector('#footerEl-container')
 const footerHTML = `
@@ -149,7 +188,9 @@ const footerHTML = `
     packOnDom(packages);
   } else if (document.URL.includes('index.html')) {
     cardsOnDom(repos)
+  } else if (document.URL.includes('repos.html')) {
+    reposOnDom(repos);
   }
 };
 
-  startApp();
+startApp();
