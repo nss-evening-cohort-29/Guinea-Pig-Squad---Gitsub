@@ -22,14 +22,26 @@ label.form-label {
 }
 
 #pinnedRepo-container {
-  float: right;
-  width: 60%;
+  /* width: 60%; */
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
-  justify-content: space-around;
-  justify-self: center;
   color: aliceblue;
+}
+
+#repo-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#packages-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#projects-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 div.row {
@@ -48,4 +60,38 @@ div.row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.card-body {
+  background-color: rgb(0, 0, 24);
+  color: white;
+  border: 2px solid #b3b2b2; /* Black border */
+  padding: 16px; /* Space inside the border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Kcard {
+  flex: 1;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-group-item {
+  background-color: rgb(0, 0, 24);
+  color: aliceblue;
+}
+
+.card-img-top {
+  display: flex;
+  align-self: center;
+  width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding-bottom: 1rem;
+}
+
+.card {
+  background-color: rgb(0, 0, 24);
 }

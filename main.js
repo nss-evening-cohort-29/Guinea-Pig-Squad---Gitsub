@@ -1,34 +1,35 @@
 const repos = [
   {
     id: 0,
-    name: 'example',
-    description: 'This is an example description for a repository',
+    name: 'calculator',
+    description: 'A basic calculator',
     tags: [
-      'example tag 1', 
-      'example tag 2',
-      'example tag 3'
+      'javascript', 
+      'html',
+      'css'
     ],
     pinned: true,
   },
   {
     id: 1,
-    name: 'example 2',
-    description: 'This is also an example description for a repository',
+    name: 'spongebob-ranking',
+    description: 'A web app which allows users to rank episodes of the tv series SpongeBob Squarepants',
     tags: [
-      'example tag 1', 
-      'example tag 2',
-      'example tag 3'
+      'javascript', 
+      'html',
+      'css',
+      'spongebob'
     ],
     pinned: true,
   },
   {
     id: 2,
-    name: 'example 3',
-    description: 'This is a further example description for a repository',
+    name: 'one-app-to-rule-them-all',
+    description: 'One app to find them',
     tags: [
-      'example tag 1', 
-      'example tag 2',
-      'example tag 3'
+      'one app to bring them all', 
+      'and in the darkness',
+      'bind them'
     ],
     pinned: true,
   }
@@ -46,27 +47,27 @@ const projects = [
   {
     id: 0,
     name: 'project 1',
-    description: 'this is a project',
+    description: 'This is the first project!',
   },
   {
     id: 1,
     name: 'project 2',
-    description: 'this is a project',
+    description: 'This is the second project!',
   },
   {
     id: 2,
     name: 'project 3',
-    description: 'this is a project',
+    description: 'This is the third project!',
   },
   {
     id: 3,
     name: 'project 4',
-    description: 'this is a project',
+    description: 'This is the fourth project!',
   },
   {
     id: 4,
     name: 'project 5',
-    description: 'this is a project',
+    description: 'This is the fifth project!',
   }
 ]
 
@@ -90,25 +91,24 @@ const navbarHtml = `
 
 const profile = document.querySelector('#profile-container');
 
-const sampleString = 'WHEEEEEEE'
 const profileHTML = `
 <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL5oj80oSnu0hbavRhtC-brZkifcmNBShH4A&s" class="card-img-top" alt="Bob Sample">
   <div class="card-body">
-    <h5 class="card-title">${sampleString}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">Bob Sample</h5>
+    <p class="card-text">I'm a fake web developer made up for the purposes of this project!</p>
     <button type="button" class="btn btn-primary">Follow</button>
     <button type="button" class="btn btn-primary">Sponsor</button>
     <button type="button" class="btn btn-primary">...</button>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">Location: Nashville, TN</li>
+    <li class="list-group-item">Email: bob@sample.com</li>
+    <li class="list-group-item">Twitter: @bobthesample</li>
     </ul>
     <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <a href="#" class="card-link">PRO User</a>
+    <a href="#" class="card-link">Repo Master</a>
   </div>
   </div>
   `
@@ -117,16 +117,16 @@ const profileHTML = `
   const packOnDom = (array) => {
     let domString = "";
     for (const package of array) {
-      domString += `<div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${package.name}</h5>
-        <p class="card-text">${package.description}</p>
-        <a href="package.html" class="btn btn-primary">learn more</a>
-      </div>
-    </div>
-  </div>`
+      domString += `
+        <div class="col-sm-6">
+          <div class="Kcard">
+            <div class="card-body">
+              <h5 class="card-title">${package.name}</h5>
+              <p class="card-text">${package.description}</p>
+              <a href="package.html" class="btn btn-primary">learn more</a>
+            </div>
+          </div>
+        </div>`
 };
 
 renderToDom("#packages-container", domString);
@@ -155,18 +155,19 @@ renderToDom("#packages-container", domString);
  const cardsOnDom = (array) => { 
   let domString = "";
   for (const repo of array) {
-    domString += `<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${repo.name}</h5>
-        <p class="card-text">${repo.description}</p>
-        <a href="#" class="btn btn-primary">☆</a>
+    domString += `
+    <div class="col-sm-6">
+      <div class="Kcard">
+        <div class="card-body">
+          <h5 class="card-title">${repo.name}</h5>
+          <p class="card-text">${repo.description}</p>
+          <a href="#" class="btn btn-primary">☆</a>
+        </div>
       </div>
-    </div>
-  </div>`
+    </div>`
   };
-
+//<div class="row">
+//<div class="col-sm-6">
 renderToDom("#pinnedRepo-container", domString);
 };
 
@@ -186,7 +187,7 @@ const reposOnDom = (array) => {
   for (const repo of array) {
     domString += `
     <div class="col-sm-6">
-      <div class="card">
+      <div class="Kcard">
         <div class="card-body">
           <h5 class="card-title">${repo.name}</h5>
           <p class="card-text">${repo.description}</p>
@@ -249,16 +250,16 @@ if (document.URL.includes("index.html")) {
 const projOnDom = (array) => { 
   let domString = "";
   for (const project of array) {
-    domString += `<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${project.name}</h5>
-        <p class="card-text">${project.description}</p>
-        <a href="#" class="btn btn-primary">Add Project</a>
-      </div>
-    </div>
-  </div>`
+    domString += `
+      <div class="col-sm-6">
+        <div class="Kcard">
+          <div class="card-body">
+            <h5 class="card-title">${project.name}</h5>
+            <p class="card-text">${project.description}</p>
+            <a href="#" class="btn btn-primary">Add Project</a>
+          </div>
+        </div>
+      </div>`
   };
 
 renderToDom("#projects-container", domString);
