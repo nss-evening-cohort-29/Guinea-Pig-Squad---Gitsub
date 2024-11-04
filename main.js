@@ -32,6 +32,17 @@ const repos = [
       'bind them'
     ],
     pinned: true,
+  },
+  {
+    id: 3,
+    name: 'colombian-decaffinated-coffee-crystals',
+    description: 'YOU LIED TO ME',
+    tags: [
+      'js',
+      'html',
+      'snl'
+    ],
+    pinned: false,
   }
 ]
 
@@ -181,6 +192,15 @@ const createTags = (repo) => {
   return tagString
 };
 
+//render star if pinned
+const renderStar = (pin) => {
+  if (pin === true) {
+    return '<a href="#" class="btn btn-primary">☆</a>'
+  } else {
+    return ''
+  }
+}
+
 //add cards for repositories
 const reposOnDom = (array) => {
   let domString = "";
@@ -191,7 +211,7 @@ const reposOnDom = (array) => {
         <div class="card-body">
           <h5 class="card-title">${repo.name}</h5>
           <p class="card-text">${repo.description}</p>
-          <a href="#" class="btn btn-primary">☆</a>
+          ${renderStar(repo.pinned)}
           ${createTags(repo)}
         </div>
       </div>
@@ -205,12 +225,13 @@ const repoForm = document.querySelector('#repo-form')
 if (document.URL.includes("repos.html")) {
   repoForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const newRepo = {
-      
       id: repos.length + 1,
       name: document.querySelector("#repo-name").value,
       description: document.querySelector("#repo-description").value,
-      tags: []
+      tags: [],
+      pinned: false
     };
     
     repos.push(newRepo);
@@ -222,8 +243,8 @@ if (document.URL.includes("repos.html")) {
 const filterPinned = (array) => {
   let newArr = [];
   array.map((entry) => {
-    if (array[entry].pinned === true) {
-      newArr.push(array[entry]);
+    if (entry.pinned === true) {
+      newArr.push(entry);
     }
   })
   return newArr;
@@ -305,7 +326,7 @@ const footerHTML = `
     if (document.URL.includes('packages.html')) {
     packOnDom(packages);
   } else if (document.URL.includes('index.html')) {
-    cardsOnDom(repos)
+    cardsOnDom(filterPinned(repos))
   } else if (document.URL.includes('projects.html')) {
     projOnDom(projects)
   } else if (document.URL.includes('repos.html')) {
