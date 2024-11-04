@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
   <div id="navbar-container">
     <!-- render navbar -->
   </div>
-
+  
+  <div id="container">
   <div id="profile-container">
     <!-- render profile -->
   </div>
@@ -21,16 +21,16 @@
   <div id="pinnedRepo-container">
     <!-- render pinned repos -->
   </div>
-
+</div>
   <form id="pinned-repo-form">
     <div class="mb-3">
-      <label for="projectBoardName" class="form-label">Project Board Name</label>
       <input type="text" class="form-control" id="projectBoardName" aria-describedby="emailHelp">
+      <label for="projectBoardName" class="form-label">Project Board Name</label>
       </div>
     </div>
     <div class="mb-3">
-      <label for="pin-repo-description" class="form-label">Description</label>
       <input type="text-area" class="form-control" id="pin-repo-description">
+      <label for="pin-repo-description" class="form-label">Description</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

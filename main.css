@@ -1,18 +1,51 @@
+body {
+  background-color: rgb(0, 0, 24);
+}
+
+label.form-label {
+  color: rgb(179, 189, 199);
+}
+
 #footerEl-container {
+  height: 30%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  color: azure;
 }
 
 #navbar-container {
   display: flex;
   justify-content:space-around;
   justify-self: center;
+  color: white;
 }
 
 #pinnedRepo-container {
+  float: right;
+  width: 60%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  justify-self: center;
+  color: aliceblue;
+}
+
+div.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#profile-container {
+  float: left;
+  max-width: 40%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
