@@ -46,7 +46,7 @@ const navbar = document.querySelector('#navbar-container');
 const navbarHtml = `
 <ul class="nav nav-underline">
     <li class="nav-item"> 
-      <a class="nav-link active" aria-current="page" href="index.html">Overview</a>
+      <a class="nav-link" aria-current="page" href="index.html">Overview</a>
     </li>
     <li class="nav-item">
     <a class="nav-link" href="repos.html">Repositories</a>
@@ -180,7 +180,6 @@ const footerHTML = `
     navbar.innerHTML = navbarHtml;
     profile.innerHTML = profileHTML;
     footerEl.innerHTML = footerHTML;
-    // cardsOnDom(repos);
     if (document.URL.includes('packages.html')) {
     packOnDom(packages);
   } else if (document.URL.includes('index.html')) {
