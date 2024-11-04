@@ -146,7 +146,7 @@ renderToDom("#packages-container", domString);
       
       packages.push(newPackage);
       packOnDom(packages);
-      form.reset();
+      pForm.reset();
     });
   }
 
@@ -200,6 +200,24 @@ const reposOnDom = (array) => {
   renderToDom('#repo-container', domString);
 };
 
+const repoForm = document.querySelector('#repo-form')
+if (document.URL.includes("repos.html")) {
+  repoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newRepo = {
+      
+      id: repos.length + 1,
+      name: document.querySelector("#repo-name").value,
+      description: document.querySelector("#repo-description").value,
+      tags: []
+    };
+    
+    repos.push(newRepo);
+    reposOnDom(repos);
+    repoForm.reset();
+  });
+}
+
 const filterPinned = (array) => {
   let newArr = [];
   array.map((entry) => {
@@ -208,6 +226,7 @@ const filterPinned = (array) => {
     }
   })
   return newArr;
+}
 
 const form = document.querySelector('#pinned-repo-form')
 
@@ -259,7 +278,7 @@ if (document.URL.includes("projects.html")) {
     
     projects.push(taco);
     projOnDom(projects);
-    form.reset();
+    projForm.reset();
   });
 }
 
@@ -294,4 +313,3 @@ const footerHTML = `
 };
 
 startApp();
-
