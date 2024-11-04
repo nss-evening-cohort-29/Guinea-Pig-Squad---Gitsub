@@ -42,6 +42,34 @@ const packages = [
   }
 ]
 
+const projects = [
+  {
+    id: 0,
+    name: 'project 1',
+    description: 'this is a project',
+  },
+  {
+    id: 1,
+    name: 'project 2',
+    description: 'this is a project',
+  },
+  {
+    id: 2,
+    name: 'project 3',
+    description: 'this is a project',
+  },
+  {
+    id: 3,
+    name: 'project 4',
+    description: 'this is a project',
+  },
+  {
+    id: 4,
+    name: 'project 5',
+    description: 'this is a project',
+  }
+]
+
 const navbar = document.querySelector('#navbar-container');
 const navbarHtml = `
 <ul class="nav nav-underline">
@@ -52,7 +80,7 @@ const navbarHtml = `
     <a class="nav-link" href="repos.html">Repositories</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Projects</a>
+      <a class="nav-link" href="projects.html" id="projects-link">Projects</a>
       </li>
     <li class="nav-item">
       <a class="nav-link" href="packages.html" id="packages-link">Packages</a>
@@ -199,6 +227,41 @@ if (document.URL.includes("index.html")) {
   });
 }
 
+const projOnDom = (array) => { 
+  let domString = "";
+  for (const project of array) {
+    domString += `<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">${project.name}</h5>
+        <p class="card-text">${project.description}</p>
+        <a href="#" class="btn btn-primary">Add Project</a>
+      </div>
+    </div>
+  </div>`
+  };
+
+renderToDom("#projects-container", domString);
+};
+
+const projForm = document.querySelector('#projects-form')
+
+if (document.URL.includes("projects.html")) {
+  projForm.addEventListener("submit", (e) => {
+    e.preventDefault(); 
+    const taco = {
+      
+      id: projects.length + 1,
+      name: document.querySelector("#projectsName").value,
+      description: document.querySelector("#projects-description").value,
+    };
+    
+    projects.push(taco);
+    projOnDom(projects);
+    form.reset();
+  });
+}
 
 const footerEl = document.querySelector('#footerEl-container')
 const footerHTML = `
@@ -224,9 +287,12 @@ const footerHTML = `
     packOnDom(packages);
   } else if (document.URL.includes('index.html')) {
     cardsOnDom(repos)
+  } else if (document.URL.includes('projects.html')) {
+    projOnDom(projects)
   } else if (document.URL.includes('repos.html')) {
     reposOnDom(repos);
   }
 };
 
 startApp();
+
