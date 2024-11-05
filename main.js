@@ -177,8 +177,6 @@ renderToDom("#packages-container", domString);
       </div>
     </div>`
   };
-//<div class="row">
-//<div class="col-sm-6">
 renderToDom("#pinnedRepo-container", domString);
 };
 
@@ -260,10 +258,11 @@ if (document.URL.includes("index.html")) {
       id: repos.length + 1,
       name: document.querySelector("#projectBoardName").value,
       description: document.querySelector("#pin-repo-description").value,
+      pinned: true
     };
     
     repos.push(newPinnedRepo);
-    cardsOnDom(repos);
+    cardsOnDom(filterPinned(repos));
     form.reset();
   });
 }
