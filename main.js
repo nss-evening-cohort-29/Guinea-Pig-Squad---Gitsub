@@ -135,6 +135,7 @@ const profileHTML = `
               <h5 class="card-title">${package.name}</h5>
               <p class="card-text">${package.description}</p>
               <a href="package.html" class="btn btn-primary">learn more</a>
+              <a href="#" class="btn btn-primary" id="delete">Delete</a>
             </div>
           </div>
         </div>`
@@ -159,6 +160,17 @@ renderToDom("#packages-container", domString);
       packOnDom(packages);
       pForm.reset();
     });
+  }
+
+  if (document.URL.includes("packages.html")) {
+  pinnedPackages.addEventListener("click", (e) => {
+    if (e.target.id.includes("delete")) {
+      const [, id] = e.target.id.split("--");
+      const index = packages.findIndex((e) => e.id === Number(id));
+      packages.splice(index, 1);
+      packOnDom(packages);
+    };
+  });
   }
 
   const pinnedRepos = document.querySelector("#pinnedRepo-container")
